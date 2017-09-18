@@ -5,6 +5,8 @@
 #include "AIController.h"
 #include "RaceAIController.generated.h"
 
+class ARacingAIPawn;
+
 /**
  * 
  */
@@ -18,5 +20,7 @@ public:
 	virtual void BeginPlay() override;
 	virtual void SetPawn(APawn* inPawn) override;
 	virtual void Tick(float DeltaTime) override;	
-
+private:
+	float CalculateSteering();
+	float CalculateThrottle();
 };
