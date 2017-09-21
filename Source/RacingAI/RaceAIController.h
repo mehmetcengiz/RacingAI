@@ -16,11 +16,13 @@ class RACINGAI_API ARaceAIController : public AAIController
 	GENERATED_BODY()
 protected:
 
+	UFUNCTION(BlueprintCallable, Category = "AI Controll")
+	void MakeAISteering(float Steering);
+	UFUNCTION(BlueprintCallable, Category = "AI Controll")
+	void MakeAIMoveForward(float Throttle);
+
 public:
 	virtual void BeginPlay() override;
 	virtual void SetPawn(APawn* inPawn) override;
 	virtual void Tick(float DeltaTime) override;	
-private:
-	float CalculateSteering();
-	float CalculateThrottle();
 };

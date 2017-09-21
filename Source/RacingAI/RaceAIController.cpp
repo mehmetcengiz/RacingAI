@@ -5,6 +5,7 @@
 #include "RacingAIPawn.h"
 
 
+
 void ARaceAIController::BeginPlay() {
 	Super::BeginPlay();
 }
@@ -21,24 +22,16 @@ void ARaceAIController::SetPawn(APawn* InPawn) {
 
 void ARaceAIController::Tick(float DeltaTime) {
 	Super::Tick(DeltaTime);
-	UE_LOG(LogTemp, Warning, TEXT("Hello I Am AI"));
+}
 
+void ARaceAIController::MakeAISteering(float Steering) {
 	auto ControlledVehicle = static_cast<ARacingAIPawn*>(GetPawn());
-	float Steering = CalculateSteering();
-	float Throttle = CalculateThrottle();
-
-	ControlledVehicle->MoveForward(Throttle);
 	ControlledVehicle->MoveRight(Steering);
-
 }
 
-float ARaceAIController::CalculateSteering(){
-	
-	return .5;
-}
-
-float ARaceAIController::CalculateThrottle(){
-	return 1;
+void ARaceAIController::MakeAIMoveForward(float Throttle){
+	auto ControlledVehicle = static_cast<ARacingAIPawn*>(GetPawn());
+	ControlledVehicle->MoveForward(Throttle);
 }
 
 
