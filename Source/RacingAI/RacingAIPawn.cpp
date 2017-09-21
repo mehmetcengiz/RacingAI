@@ -14,6 +14,7 @@
 #include "PhysicalMaterials/PhysicalMaterial.h"
 #include "WheeledVehicleMovementComponent4W.h"
 #include "Engine/SkeletalMesh.h"
+#include "Components/SplineComponent.h"
 
 
 // Needed for VR Headset

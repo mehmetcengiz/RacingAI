@@ -8,6 +8,7 @@ class UCameraComponent;
 class USpringArmComponent;
 class UTextRenderComponent;
 class UInputComponent;
+class USplineComponent;
 
 UCLASS(config=Game)
 class ARacingAIPawn : public AWheeledVehicle
