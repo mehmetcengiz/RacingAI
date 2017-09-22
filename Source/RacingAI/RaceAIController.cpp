@@ -34,4 +34,12 @@ void ARaceAIController::MakeAIMoveForward(float Throttle){
 	ControlledVehicle->MoveForward(Throttle);
 }
 
+void ARaceAIController::MakeAIDecision(float Steering, float Throttle){
+	
+}
+
+void ARaceAIController::SetTopSpeed(float Speed){
+	CurrentTopSpeed = Speed;
+}
+
 

@@ -20,9 +20,18 @@ protected:
 	void MakeAISteering(float Steering);
 	UFUNCTION(BlueprintCallable, Category = "AI Controll")
 	void MakeAIMoveForward(float Throttle);
+	UFUNCTION(BlueprintCallable, Category = "AI Controll")
+	void MakeAIDecision(float Steering,float Throttle);
+	
+	UFUNCTION(BlueprintCallable, Category = "AI Controll")
+	void SetTopSpeed(float Speed);
+	
 
 public:
 	virtual void BeginPlay() override;
 	virtual void SetPawn(APawn* inPawn) override;
 	virtual void Tick(float DeltaTime) override;	
+
+	
+	float CurrentTopSpeed = 150;
 };
