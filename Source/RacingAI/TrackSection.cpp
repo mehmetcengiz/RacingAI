@@ -2,7 +2,7 @@
 
 #include "RacingAI.h"
 #include "TrackSection.h"
-
+#include "RacingAIPawn.h"
 
 // Sets default values
 ATrackSection::ATrackSection(){
@@ -21,8 +21,4 @@ void ATrackSection::BeginPlay(){
 void ATrackSection::Tick(float DeltaTime){
 	Super::Tick(DeltaTime);
 
-}
-
-void ATrackSection::SetTopSpeed(){
-	
 }

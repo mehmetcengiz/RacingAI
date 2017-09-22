@@ -22,24 +22,37 @@ void ARaceAIController::SetPawn(APawn* InPawn) {
 
 void ARaceAIController::Tick(float DeltaTime) {
 	Super::Tick(DeltaTime);
-}
-
-void ARaceAIController::MakeAISteering(float Steering) {
-	auto ControlledVehicle = static_cast<ARacingAIPawn*>(GetPawn());
-	ControlledVehicle->MoveRight(Steering);
-}
-
-void ARaceAIController::MakeAIMoveForward(float Throttle){
-	auto ControlledVehicle = static_cast<ARacingAIPawn*>(GetPawn());
-	ControlledVehicle->MoveForward(Throttle);
-}
-
-void ARaceAIController::MakeAIDecision(float Steering, float Throttle){
 	
 }
 
-void ARaceAIController::SetTopSpeed(float Speed){
-	CurrentTopSpeed = Speed;
+
+void ARaceAIController::MakeAIDecision(float Steering,int32 CurrentSpeed){
+	auto ControlledVehicle = static_cast<ARacingAIPawn*>(GetPawn());
+	HandleSpeed(CurrentSpeed, ControlledVehicle);
+	ControlledVehicle->MoveRight(Steering);
+
+}
+
+void ARaceAIController::SetTopSpeed(int32 Speed){
+	TopSpeed = Speed;
 }
 
 
+
+void ARaceAIController::HandleSpeed(int32 CurrentSpeed, ARacingAIPawn* ControlledVehicle){
+
+	FString CurrentSpeedString = FString::FromInt(CurrentSpeed);
+	FString TopSpeedString = FString::FromInt(TopSpeed);
+
+	UE_LOG(LogTemp, Warning, TEXT("Name: %s TopSpeed: %s  CurrentSpeed: %s"), *ControlledVehicle->GetName(), *TopSpeedString, *CurrentSpeedString);
+	
+	if(TopSpeed >= CurrentSpeed){
+		ControlledVehicle->MoveForward(1);
+		ControlledVehicle->OnHandbrakeReleased();
+	}else if(TopSpeed * 1.5 < CurrentSpeed){
+		ControlledVehicle->OnHandbrakePressed();
+	}else if(TopSpeed <CurrentSpeed){
+		ControlledVehicle->MoveForward(0);
+		ControlledVehicle->OnHandbrakeReleased();
+	}
+}

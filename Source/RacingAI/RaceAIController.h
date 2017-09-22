@@ -15,23 +15,19 @@ class RACINGAI_API ARaceAIController : public AAIController
 {
 	GENERATED_BODY()
 protected:
-
 	UFUNCTION(BlueprintCallable, Category = "AI Controll")
-	void MakeAISteering(float Steering);
-	UFUNCTION(BlueprintCallable, Category = "AI Controll")
-	void MakeAIMoveForward(float Throttle);
-	UFUNCTION(BlueprintCallable, Category = "AI Controll")
-	void MakeAIDecision(float Steering,float Throttle);
+	void MakeAIDecision(float Steering,int32 CurrentSpeed);
 	
 	UFUNCTION(BlueprintCallable, Category = "AI Controll")
-	void SetTopSpeed(float Speed);
+	void SetTopSpeed(int32 Speed);
 	
 
 public:
 	virtual void BeginPlay() override;
 	virtual void SetPawn(APawn* inPawn) override;
-	virtual void Tick(float DeltaTime) override;	
+	virtual void Tick(float DeltaTime) override;
+	void HandleSpeed(int32 CurrentSpeed, ARacingAIPawn* ControlledVehicle);
 
-	
-	float CurrentTopSpeed = 150;
+
+	int32 TopSpeed = 150;
 };

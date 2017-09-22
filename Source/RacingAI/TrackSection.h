@@ -17,16 +17,9 @@ public:
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
-
-	UFUNCTION(BlueprintCallable, Category = "AI Controller")
-	void SetTopSpeed();
-
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
-
-	UPROPERTY(EditInstanceOnly, Category = "AI Settings")
-	float SetTopSpeedTo = 150;
-	
+		
 	
 };
